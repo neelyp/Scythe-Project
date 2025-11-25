@@ -47,68 +47,56 @@
 
   const questions = [
     {
-      text: "You arrive at a crowded market to glean one person. How do you proceed?",
+      text: "You arrive at a crowded market to Glean. How do you proceed?",
       options: [
         {
-          label: "",
           title:
-            "Invite the family to a meal afterward to ensure they are witnessed.",
+            "Pick a random person and then invite the family to a meal afterward to get to know the person better.",
           key: "curie",
         },
         {
-          label: "",
-          title:
-            "Pick randomly within demographic targets, keep it swift and quiet.",
+          title: "Pick randomly based on death statistics from the Mortal Age",
           key: "faraday",
         },
         {
-          label: "",
-          title:
-            "Announce publicly and make it theatrical to reaffirm authority.",
+          title: "Announce publicly and glean everyone in the market.",
           key: "goddard",
         },
-
       ],
     },
     {
-      text: "A fellow Scythe bends rules to avoid traumatizing children. You?",
+      text: "A fellow Scythe bends rules to avoid Gleaning children. How do you react?",
       options: [
         {
-          label: "",
           title:
-            "Defend them; mercy first, write it in your journal as precedent.",
+            "Defend them, stating that children have not lived long enough to warrant being killed",
           key: "curie",
         },
         {
-          label: "",
           title:
-            "Note the breach, suggest a formal amendment to legitimize the instinct.",
+            "Point out the rule break, but suggest a change to the rule to make this allowed.",
           key: "faraday",
         },
         {
-          label: "",
-          title: "Call it weakness; rules exist to keep fear sharp.",
+          title: "Call out the Scythe for being weak.",
           key: "goddard",
         },
-
       ],
     },
     {
-      text: 'Conclave proposes live-streaming gleanings "for transparency." Your vote?',
+      text: "Your apprentice asks you how you stay calm after a gleaning. How do you respond?",
       options: [
         {
-          label: "",
-          title: "Only if families consent and aftermath support is built in.",
+          title: "Remember the person and not the act.",
           key: "curie",
         },
         {
-          label: "",
-          title: "Oppose; transparency without context distorts statistics.",
+          title:
+            "Stay disciplined. It can be hard to not feel bad after a gleaning, but it is our duty as Scythes to do them.",
           key: "faraday",
         },
         {
-          label: "",
-          title: "Support; spectacle maintains respect and recruits strength.",
+          title: "Instead of feeling bad about gleaning, embrace the act",
           key: "goddard",
         },
       ],
@@ -117,54 +105,47 @@
       text: "Your apprentice hesitates at their first gleaning.",
       options: [
         {
-          title: "Pause and let them speak to the family; empathy is training.",
-          label: "",
+          title: "Guide them through completing the gleaning with respect",
           key: "curie",
         },
         {
-          title: "Step in, complete the act, debrief later with clear rules.",
-          label: "",
+          title:
+            "Demand that they complete it, but afterward state that hesitating shows humanity.",
           key: "faraday",
         },
         {
-          title: "Force them through; hesitation is a liability.",
-          label: "",
+          title: "Force them to follow through.",
           key: "goddard",
         },
       ],
     },
     {
-      text: "A region exceeds its quota due to disaster. How do you correct?",
+      text: "A group of citizens offer you gifts in exchange for immunity. What do you do?",
       options: [
         {
           title:
-            "Volunteer more personal gleanings to spare juniors; prioritize consent conversations.",
+            "Thank them but refuse as you remind them that no one can get special treatment.",
           key: "curie",
         },
         {
-          title:
-            "Rebalance across regions quietly to restore statistical fairness.",
+          title: "Ignore them and move on.",
           key: "faraday",
         },
         {
-          title:
-            "Stage high-profile mass gleanings to reset fear and compliance.",
+          title: "Accept the gifts and grant them immunity",
           key: "goddard",
         },
-
       ],
     },
   ];
 
   const blurbs = {
     curie:
-      "Curie-mode: You prioritize dignity, witnessing, and relational mercy. You slow the blade to keep humanity visible.",
+      "Scythe Curie Archetype: Your priority is to preserve the humanity of your job.",
     faraday:
-      "Faraday-mode: You enforce balance through process and restraint. You trust rules to keep power in check.",
+      "Scythe Faraday Archetype: You strive to keep balance through rules and staying disciplined.",
     goddard:
-      "Goddard-mode: You lean on spectacle and dominance to assert control. You see fear as a management tool.",
-    thunderhead:
-      "Thunderhead-mode: You default to data and systemic outcomes, minimizing variance over individual sentiment.",
+      "Scythe Goddard Archetype: You treat gleaning as entertainment and seek celebrity status through being a Scythe",
   };
 
   let scores = { curie: 0, faraday: 0, goddard: 0, thunderhead: 0 };
@@ -175,7 +156,7 @@
       const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
       result.textContent =
         blurbs[best] ||
-        "You balance multiple modes; your Scythe style is hybrid.";
+        "You balance multiple Archetypes; your Scythe style is hybrid.";
       questionEl.textContent = "Completed";
       optionsEl.innerHTML = "";
       progressEl.textContent = `Result ready`;
@@ -190,7 +171,7 @@
       card.type = "button";
       card.className = "option-card";
       card.setAttribute("data-key", opt.key);
-      card.innerHTML = `<strong>${opt.title}</strong><span>${opt.label}</span>`;
+      card.innerHTML = `<strong>${opt.title}</strong>`;
       card.addEventListener("click", () => {
         scores[opt.key] += 1;
         idx += 1;
